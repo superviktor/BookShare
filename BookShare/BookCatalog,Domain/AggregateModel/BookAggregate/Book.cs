@@ -29,15 +29,17 @@ namespace BookCatalog_Domain.AggregateModel.BookAggregate
             Annotation = annotation;
             Status = Status.AwaitingValidation;
 
-            AddDomainEvent(new NewBookDomainEvent(this));
+            AddDomainEvent(new BookCreatedDomainEvent(this));
         }
 
-        public void AddAuthor(string firstName, string lastName, Country country)
+        public void AddAuthor(string firstName, string lastName, string countryName, string countryCode)
         {
-            var existingAuthor = _authors.SingleOrDefault(author => author.FirstName == firstName && author.LastName == lastName && author.Country == country);
+            var country = new Country(countryName, countryCode);
+            var author = new Author(firstName, lastName, country);
+
+            var existingAuthor = _authors.SingleOrDefault(currentAuthor => currentAuthor.Equals(author));
             if (existingAuthor == null)
             {
-                var author = new Author(firstName, lastName, country);
                 _authors.Add(author);
             }
         }

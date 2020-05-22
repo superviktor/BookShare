@@ -5,8 +5,4 @@
     <RootNamespace>BookCatalog_Domain</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="8.0.1" />
-  </ItemGroup>
-
 </Project>

@@ -1,21 +1,56 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using BookCatalog.Application.Application.MapperConfigurations;
+using BookCatalog.Infrastructure;
+using BookCatalog.Infrastructure.Options;
+using BookCatalog.Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace BookCatalog.Application
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public Startup(IConfiguration configuration)
+        {
+            this.Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureMapper(services);
+
+            ConfigureSwagger(services);
+
+            services.Configure<AzureTablesOptions>(Configuration);
+
+            services.AddTransient<IBookRepository>(x => new BookRepository(x.GetService<AzureTablesOptions>()));
+
+            services.AddMvcCore().AddApiExplorer();
+        }
+
+        private static void ConfigureSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Book Catalog", Version = "v1" });
+            });
+        }
+
+        private static void ConfigureMapper(IServiceCollection services)
+        {
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new BookProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,13 +63,13 @@ namespace BookCatalog.Application
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Book Catalog");
             });
+
         }
     }
 }

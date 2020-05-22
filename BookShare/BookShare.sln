@@ -7,17 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookCatalog", "BookCatalog", "{080F116F-11BC-4AED-B80A-0FC2A784DFBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.Domain", "BookCatalog,Domain\BookCatalog.Domain.csproj", "{6B23D9A8-EE72-434D-9D84-1789D34A76DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCatalog.Domain", "BookCatalog,Domain\BookCatalog.Domain.csproj", "{6B23D9A8-EE72-434D-9D84-1789D34A76DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.Infrastructure", "BookCatalog.Infrastructure\BookCatalog.Infrastructure.csproj", "{0E1DDCE0-0018-4A2A-BBE1-04F8DFA0CF4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCatalog.Infrastructure", "BookCatalog.Infrastructure\BookCatalog.Infrastructure.csproj", "{0E1DDCE0-0018-4A2A-BBE1-04F8DFA0CF4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.Application", "BookCatalog.Application\BookCatalog.Application.csproj", "{2462650A-458D-4ADE-98D8-B8EDA3665AF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCatalog.Application", "BookCatalog.Application\BookCatalog.Application.csproj", "{2462650A-458D-4ADE-98D8-B8EDA3665AF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B3E617B6-D7C7-4EC5-8973-A23FA11E934C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.UnitTests", "BookCatalog.UnitTests\BookCatalog.UnitTests.csproj", "{6084EBE2-2D76-47BE-8344-31951A23397A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCatalog.UnitTests", "BookCatalog.UnitTests\BookCatalog.UnitTests.csproj", "{6084EBE2-2D76-47BE-8344-31951A23397A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.Infrastructure.AzureTable", "BookCatalog.Infrastructure.AzureTable\BookCatalog.Infrastructure.AzureTable.csproj", "{94C37F87-4F5A-4F6B-94E8-980987DEF165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCatalog.Infrastructure.AzureTable", "BookCatalog.Infrastructure.AzureTable\BookCatalog.Infrastructure.AzureTable.csproj", "{94C37F87-4F5A-4F6B-94E8-980987DEF165}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

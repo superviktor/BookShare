@@ -1,13 +1,13 @@
 ﻿using BookCatalog_Domain.AggregateModel.BookAggregate;
-using MediatR;
+using BookCatalog_Domain.Base;
 
 namespace BookCatalog_Domain.Events
 {
-    public class NewBookDomainEvent : INotification
+    public class BookCreatedDomainEvent : IDomainEvent
     {
         public Book Book { get; }
 
-        public NewBookDomainEvent(Book book)
+        public BookCreatedDomainEvent(Book book)
         {
             Book = book;
         }

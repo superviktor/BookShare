@@ -1,9 +1,9 @@
 ﻿using BookCatalog_Domain.AggregateModel.BookAggregate;
-using MediatR;
+using BookCatalog_Domain.Base;
 
 namespace BookCatalog_Domain.Events
 {
-    public class BookRejectedDomainEvent : INotification
+    public class BookRejectedDomainEvent : IDomainEvent
     {
         public Book Book { get; }
 

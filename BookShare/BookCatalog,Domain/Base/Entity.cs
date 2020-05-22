@@ -1,5 +1,4 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace BookCatalog_Domain.Base
@@ -8,16 +7,16 @@ namespace BookCatalog_Domain.Base
     {
         public virtual Guid Id { get; set; }
 
-        private List<INotification> _domainEvents;
-        public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
+        private List<object> _domainEvents;
+        public IReadOnlyCollection<object> DomaibjenEvents => _domainEvents?.AsReadOnly();
 
-        public void AddDomainEvent(INotification domainEvent)
+        public void AddDomainEvent(object domainEvent)
         {
-            _domainEvents = _domainEvents ?? new List<INotification>();
+            _domainEvents = _domainEvents ?? new List<object>();
             _domainEvents.Add(domainEvent);
         }
 
-        public void RemoveDomainEvent(INotification eventItem)
+        public void RemoveDomainEvent(object eventItem)
         {
             _domainEvents?.Remove(eventItem);
         }

@@ -2,7 +2,7 @@
 
 namespace BookCatalog.Infrastructure.Entity
 {
-    public class Book : TableEntity
+    public class BookEntity : TableEntity
     {
         public string Name { get; private set; }
         public string Annotation { get; private set; }

@@ -5,6 +5,6 @@ namespace BookCatalog.Infrastructure.Repository
 {
     public interface IBookRepository
     {
-        Task AddAsync(Book book);
+        Task AddAsync(BookEntity book);
     }
 }

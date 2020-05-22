@@ -1,15 +1,23 @@
 ﻿using BookCatalog_Domain.Base;
+using System.Collections.Generic;
 
 namespace BookCatalog_Domain.AggregateModel.BookAggregate
 {
-    public class Country : Enumeration
+    public class Country : ValueObject
     {
-        public Country(int id, string name) : base(id, name)
+        public string Name { get; set; }
+        public string Code { get; set; }
+
+        public Country(string name, string code)
         {
+            this.Name = name;
+            this.Code = code;
         }
 
-        public static Country Usa = new Country(1, nameof(Usa).ToLowerInvariant());
-        public static Country GreatBritain = new Country(2, nameof(GreatBritain).ToLowerInvariant());
-
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Name;
+            yield return Code;
+        }
     }
 }
